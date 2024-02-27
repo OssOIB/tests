@@ -1,4 +1,6 @@
-export const isValidDate = date =>
+// dateUtils.js
+
+export const isValidDate = (date) =>
   (date !== null && date !== undefined && Number.isNaN(Number(date))) ||
   (typeof date === 'string' && date !== '');
 
@@ -11,4 +13,9 @@ export const setDate = ({
   date,
   formatDateFn = formatDate,
   isValidDateFn = isValidDate,
-}) => (isValidDateFn(date) ? formatDateFn(date) : '');
+}) => {
+  if (isValidDateFn(date)) {
+    return formatDateFn(date);
+  }
+  return '';
+};
